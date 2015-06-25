@@ -4629,7 +4629,7 @@ status_t OMXCodec::setFLACFormat(const sp<MetaData> &meta)
 
     param.nChannels = numChannels;
     param.nSampleRate = sampleRate;
-    param.nBitsPerSample = bitsPerSample;
+    //param.nBitsPerSample = bitsPerSample;
 
     err = mOMX->setParameter(
             mNode, OMX_IndexParamAudioFlac, &param, sizeof(param));

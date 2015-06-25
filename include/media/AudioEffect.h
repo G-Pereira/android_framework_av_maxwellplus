@@ -278,6 +278,11 @@ public:
      */
             status_t    initCheck() const;
 
+     /* kMaxPreProcessing is a reasonable value for the maximum number of preprocessing effects
+      * that can be applied simultaneously.
+      */
+	    static const uint32_t kMaxPreProcessing = 10;
+
 
     /* Returns the unique effect Id for the controlled effect engine. This ID is unique
      * system wide and is used for instance in the case of auxiliary effects to attach

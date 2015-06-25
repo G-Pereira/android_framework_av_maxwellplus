@@ -529,7 +529,7 @@ status_t sendMetaDataToHal(sp<MediaPlayerBase::AudioSink>& sink,
         param.addInt(String8(AUDIO_OFFLOAD_CODEC_PADDING_SAMPLES), paddingSamples);
     }
     if (meta->findInt32(kKeyIsADTS, &isADTS)) {
-        param.addInt(String8(AUDIO_OFFLOAD_CODEC_FORMAT), 0x02 /*SND_AUDIOSTREAMFORMAT_MP4ADTS*/);
+        //param.addInt(String8(AUDIO_OFFLOAD_CODEC_FORMAT), 0x02 /*SND_AUDIOSTREAMFORMAT_MP4ADTS*/);
     }
 #ifdef ENABLE_AV_ENHANCEMENTS
     if (meta->findInt32(kKeyMinBlkSize, &minBlkSize)) {
@@ -628,7 +628,7 @@ bool canOffloadStream(const sp<MetaData>& meta, bool hasVideo, const sp<MetaData
     if (mapMimeToAudioFormat(info.format, mime) != OK) {
         ALOGE(" Couldn't map mime type \"%s\" to a valid AudioSystem::audio_format !", mime);
         return false;
-    } else if (audio_is_linear_pcm(info.format) || audio_is_offload_pcm(info.format)) {
+    } else if (audio_is_linear_pcm(info.format)) {
 #if defined(QCOM_HARDWARE) || defined(ENABLE_OFFLOAD_ENHANCEMENTS)
         // Override audio format for PCM offload
         if (bitWidth >= 24) {

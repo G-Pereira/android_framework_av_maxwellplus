@@ -190,7 +190,7 @@ status_t AudioPlayer::start(bool sourceAlreadyStarted) {
         if (mapMimeToAudioFormat(audioFormat, mime) != OK) {
             ALOGE("Couldn't map mime type \"%s\" to a valid AudioSystem::audio_format", mime);
             audioFormat = AUDIO_FORMAT_INVALID;
-        } else if (audio_is_linear_pcm(audioFormat) || audio_is_offload_pcm(audioFormat)) {
+        } else if (audio_is_linear_pcm(audioFormat)) {
 #if defined(QCOM_HARDWARE) || defined(ENABLE_OFFLOAD_ENHANCEMENTS)
             // Override audio format for PCM offload
             if (bitWidth >= 24) {
